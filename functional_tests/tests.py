@@ -1,10 +1,11 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 
 
-class NewVisionTest(unittest.TestCase):
+class NewVisionTest(LiveServerTestCase):
     """Тест нового посетителя"""
 
     def setUp(self):
@@ -29,7 +30,7 @@ class NewVisionTest(unittest.TestCase):
         # Эдит слышала о крутом новое онлайн-приложение со списком
         # неотложных дел. Она решает оценить его
         # домашнюю страницу
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # Она видит, что заголовок и шапка страницы говорят о списках
         # неотложных дел
