@@ -185,4 +185,3 @@ class NewVisionTest(LiveServerTestCase):
 
         # Удовлетворенные, они оба ложатся спать
 
-
