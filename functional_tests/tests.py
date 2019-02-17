@@ -183,5 +183,5 @@ class NewVisionTest(LiveServerTestCase):
         self.assertNotIn('Купить павлиньи перья', page_text)
         self.assertIn('Купить молоко', page_text)
 
-        # Удовлетворенные, они оба ложатся спать
+        # Удовлетворенные, они оба ложатся спатьп
 
