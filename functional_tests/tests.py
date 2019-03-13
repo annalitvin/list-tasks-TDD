@@ -38,57 +38,6 @@ class NewVisionTest(StaticLiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
-    def test_can_start_a_list_and_retrieve_it_later(self):
-        """тест: можно начать список и получить его позже"""
-
-        # Эдит слышала о крутом новое онлайн-приложение со списком
-        # неотложных дел. Она решает оценить его
-        # домашнюю страницу
-        self.browser.get(self.live_server_url)
-
-        # Она видит, что заголовок и шапка страницы говорят о списках
-        # неотложных дел
-        self.assertIn('To-Do', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('To-Do', header_text)
-
-        # Ей сразу же предлагается ввести элемент списка
-
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
-        # Она набирает в текстовом поле "Купить павлинные перья" (ее хобби -
-        # вязание розовых мушек)
-
-        inputbox.send_keys('Купить павлиньи перья')
-        # Когда она нажимает enter, страница обновляется, и теперь страница
-        # содержит "1: Купить павлиньи перья" в качестве элемента списка
-
-        inputbox.send_keys(Keys.ENTER)
-
-        self.wait_for_row_in_list_table('1: Купить павлиньи перья')
-
-        # Текстовое поле по-прежнему приглашает ее добавить еще один элемент.
-        # Она вводит "Сделать мушку из павлиньих перьев"
-        # (Эдит очень методична)
-
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Сделать мушку из павлинных перьев')
-        inputbox.send_keys(Keys.ENTER)
-
-        # Страница снова обновляется, и теперь показывает оба элемента ее списка
-
-        self.wait_for_row_in_list_table('2: Сделать мушку из павлинных перьев')
-        self.wait_for_row_in_list_table('1: Купить павлиньи перья')
-
-        # Эдит интересно, запомнит ли сайт ее список. Далее она видит, что
-        # сайт сгенерировал для нее уникальный URL-адресс - об этом
-        # выводится небольшой текст с объявлениями.
-
-        self.fail('Закончить тест!')
-
-        # Она посещает этот URL-адрес - ее список по-прежнему там.
-
-        # Удовлетворенная, она снова ложиться спать.
 
     def test_can_start_a_list_for_one_user(self):
         """тест: можно начать список для одного пользователя"""
